@@ -41,8 +41,8 @@ returns:
             x = float(line[30:38].strip())
             y = float(line[38:46].strip())
             z = float(line[46:54].strip())
-            if line[12:16].strip() == "CA":
-				xyz.append([x, y, z])
+            #if line[12:16].strip() == "CA": # take anything!
+            xyz.append([x, y, z])
     pdb_file.close()
     return xyz
 
@@ -69,7 +69,7 @@ if not os.path.exists(pdb_name):
 #--------------------------------------------------------------------------
 # read pdb
 xyz = read_pdb_xyz(pdb_name)
-print "%d CA atomes found if %s" %(len(xyz), pdb_name)
+print "%d atomes found if %s" %(len(xyz), pdb_name)
 
 #create coordinates array
 coord = numpy.array(xyz, float)

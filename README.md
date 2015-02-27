@@ -1,48 +1,48 @@
-Principal axes
+Principal axes (of RNA)
 ==============
 
 This program reads a .pdb file, computes principal axes and produces a .pml PyMoL script to view axes.
 
-Note that only C-alpha atoms are read and that the .pdb file must only contain a single *coherent* protein structure.
+In this version of the program, all atoms are read and the masses of atoms are not taken into account!
 
+## Example
 
-## Example
-
-with the cryo-EM structure of chicken gizzard smooth muscle alpha-actinin ([1SJJ](http://www.rcsb.org/pdb/explore.do?structureId=1SJJ) from the [Protein Data Bank](http://www.rcsb.org/pdb/home/home.do)):
-
-```text
-./principal_axes.py  1SJJ.pdb
-```
+with the x-ray structure of a rigorously conserved RNA element within the SARS virus genome ([1XJR](http://www.rcsb.org/pdb/explore.do?structureId=1XJR) from the [Protein Data Bank](http://www.rcsb.org/pdb/home/home.do)):
 
 ```text
-950 CA atomes found if 1SJJ.pdb
+$ ./principal_axes.py test_data/1xjr_clean.pdb
+1024 atomes found if test_data/1xjr_clean.pdb
 Coordinates of the geometric center:
-[-107.35616421  -44.75738526    8.11289053]
+[ 47.58264063  35.26179395  46.47487402]
 (Unordered) eigen values:
-[ 4854301.51173111   111627.33781935    52235.74662753]
+[ 264477.25123486   37291.72833667   32510.49200449]
 (Unordered) eigen vectors:
-[[-0.85667497 -0.50720869  0.09406029]
- [-0.51289152  0.81795036 -0.26057532]
- [-0.05522942  0.27147108  0.96086064]]
+[[ 0.79451019 -0.57519738 -0.19468316]
+ [-0.03231119  0.28009986 -0.95942694]
+ [-0.60639059 -0.76856493 -0.20395688]]
 Inertia axis are now ordered !
 The first principal axis is in red
-coordinates:  [-0.85667497 -0.51289152 -0.05522942]
-eigen value:  4854301.51173
+coordinates:  [ 0.79451019 -0.03231119 -0.60639059]
+eigen value:  264477.251235
 
 The second principal axis is in green
-coordinates: [-0.50720869  0.81795036  0.27147108]
-eigen value: 111627.337819
+coordinates: [-0.57519738  0.28009986 -0.76856493]
+eigen value: 37291.7283367
 
 The third principal axis is in blue
-coordinates: [ 0.09406029 -0.26057532  0.96086064]
-eigen value: 52235.7466275
+coordinates: [-0.19468316 -0.95942694 -0.20395688]
+eigen value: 32510.4920045
 
-You can view principal axes with Pymol:
-pymol 1SJJ_axes.pml 1SJJ.pdb
+You can view principal axes with PyMOL:
+pymol test_data/1xjr_clean_axes.pml test_data/1xjr_clean.pdb
 ```
 
-![1SJJ](img/1SJJ.png "1SJJ")
+```text
+pymol test_data/1xjr_clean_axes.pml test_data/1xjr_clean.pdb
+```
 
-## History
+![1XJR](gif/1xjr.gif)
+
+## History
 
 The first version of this script had been posted in the Biostar forum as an answer to [Question: Protein 3D structure principal axes](http://www.biostars.org/p/7393/)
